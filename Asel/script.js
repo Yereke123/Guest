@@ -34,29 +34,30 @@ async function loadContact() {
         const cleanPhone = person.phone.replace(/\D/g, ''); 
         document.getElementById("btnWhatsapp").href = `https://wa.me/${cleanPhone}`;
 
-       // === УМНАЯ НАСТРОЙКА КНОПКИ ПОЧТЫ ===
-    const emailBtn = document.getElementById("btnEmail");
-    const userEmail = person.email;
+        // === УМНАЯ НАСТРОЙКА КНОПКИ ПОЧТЫ ===
+        const emailBtn = document.getElementById("btnEmail");
+        const userEmail = person.email;
 
-    // Проверяем устройство (телефон или планшет)
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-    if (isMobile) {
-        // ЕСЛИ ТЕЛЕФОН: открываем встроенное приложение (Gmail, Apple Mail и т.д.)
-        emailBtn.href = `mailto:${userEmail}`;
-        emailBtn.removeAttribute("target"); // Открываем в том же окне
-    } else {
-        // ЕСЛИ КОМПЬЮТЕР: открываем Gmail прямо в браузере
-        emailBtn.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${userEmail}`;
-        emailBtn.target = "_blank"; // Открываем в новой вкладке, чтобы не закрыть визитку
+        if (isMobile) {
+            emailBtn.href = `mailto:${userEmail}`;
+            emailBtn.removeAttribute("target");
+        } else {
+            emailBtn.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${userEmail}`;
+            emailBtn.target = "_blank";
+        }
         
-        // ВАЖНО: Если большинство ваших клиентов пользуются Mail.ru, 
-        // закомментируйте строку с Gmail (поставьте // в начале) 
-        // и раскомментируйте строку ниже:
-        // emailBtn.href = `https://e.mail.ru/compose/?to=${userEmail}`;
-    }
-    
-      document.getElementById("btnWebsite").href = person.website;
+        // === НАСТРАИВАЕМ САЙТ ===
+        if (person.website) {
+            document.getElementById("btnWebsite").href = person.website;
+        }
+
+        // === НАСТРАИВАЕМ ИНСТАГРАМ (НОВОЕ) ===
+        const instaBtn = document.getElementById("btnInstagram");
+        if (instaBtn && person.instagram) {
+            instaBtn.href = person.instagram;
+        }
 
     } catch (error) {
         console.error("Ошибка:", error);
