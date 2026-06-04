@@ -1,0 +1,70 @@
+:root {
+  --main-blue: #0056b3; /* Ваш зеленый цвет */
+  --hover-text-color: #000000;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+
+body {
+  background-color: #d1d5db; /* Сделал фон немного более выраженным серым */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.profile-card {
+  background: white;
+  width: 100%;
+  max-width: 450px;
+  border-radius: 25px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  text-align: center;
+  overflow: hidden;
+}
+
+.card-content { padding: 30px; }
+
+.logo-container img { max-height: 135px; margin-bottom: 20px; }
+
+.photo-container {
+  width: 140px; height: 140px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  /* ИСПРАВЛЕНО: Белая рамка заменена на зеленую (var(--main-blue)) */
+  border: 5px solid var(--main-blue); 
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.photo-container img { width: 100%; height: 100%; object-fit: cover; }
+
+.info h2 { font-size: 1.8rem; margin-bottom: 8px; color: #222; }
+.job-title { color: var(--main-blue); font-size: 1.1rem; margin-bottom: 30px; font-weight: 600;}
+
+.actions { display: flex; flex-direction: column; gap: 15px; }
+
+.btn {
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; padding: 14px; border-radius: 12px;
+  font-weight: 600; gap: 10px; transition: 0.3s;
+  background-color: var(--main-blue); color: white;
+  border: 2px solid var(--main-blue);
+}
+
+.btn:hover { background-color: white; color: var(--hover-text-color); }
+
+.card-footer-blue { background-color: var(--main-blue); padding: 20px 0; }
+
+.footer-links a {
+  text-decoration: none; color: white;
+  display: flex; flex-direction: column; align-items: center;
+}
+
+.icon-box {
+  background: rgba(255, 255, 255, 0.2);
+  width: 45px; height: 45px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 5px;
+}
